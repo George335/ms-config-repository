@@ -1,0 +1,69 @@
+spring:
+  application:
+    name: ms-cronbackup-rest
+  server:
+    port: 8080
+  batch:
+    job:
+      enabled: false
+    initialize-schema: always
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: loggers,configprops,env, health,threaddump,heapdump,jolokia,logfile,auditevents,beans,caches,conditions,flyway,httptrace,info,integrationgraph,liquibase,metrics,mappings,scheduledtasks,sessions,shutdownprometheus
+
+database:
+  enabled: true
+  dbclarodesarrollo:
+    jdbcUrl: jdbc:mysql://localhost:3306/test?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: 
+    driverClassName: com.mysql.cj.jdbc.Driver
+    name: test
+
+#FECHA QUE SE VA A EJECUTAR
+cron:
+  consultaAuditoria: '*/58 * * * * *'
+  consultaPagos: '*/20 * * * * *' 
+
+parametros:
+  flagconservaenbdxmes: false
+  conservarenbdmes: -1
+  conservarenbdsemana: -1
+  flagbkporsemana: false
+  backuptiemposemana: -1
+  backuptiempodias: -1
+  pagosflagconservaenbdxmes: false
+  pagosconservarenbdmes: -1
+  pagosconservarenbdsemana: -5
+  pagosflagbkporsemana: false
+  pagosbackuptiemposemana: -1
+  pagosbackuptiempodias: -6
+
+respuesta:
+  codigo:
+    idf0: 0
+    idf1: 1
+    idf2: 2
+    idt1: -1
+    idt2: -2
+    idt3: -3
+    idt4: -4
+    idt5: -5
+  mensaje:
+    idf0: Operación Exitosa
+    idf1: Se debe enviar campos obligatorios
+    idf2: 'No se obtuvo resultados en el metodo $me del WS $ws. Descripción: [$error]'
+    idt1: Error por timeout en la bd $bd. Origen [$o]
+    idt2: 'Error en la disponibilidad en la bd $bd. Origen [$o] Descripcion:[$error]' 
+    idt3: Error de timeout en el metodo $me del WS $ws. Origen [$o]
+    idt4: 'Error de disponibilidad en el servicio $ws. Metodo: $me. Origen [$o] - Descripción: [$error]'
+    idt5: Ocurrió un error inesperado. Origen [$o] - Descripción:[$error]  
+    
+variables:
+  nombreBD: dbclarodesarrollo
+
+offers:
+  discount: 40%
