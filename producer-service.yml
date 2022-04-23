@@ -14,4 +14,4 @@ spring:
     show-sql: true
   mvc:
     pathmatch:
-	  matching-strategy: ant-path-matcher
+      matching-strategy: ant-path-matcher
